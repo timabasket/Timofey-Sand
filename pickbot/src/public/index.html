@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="ru-RU" ng-app="myApp">
+  <head>
+    <meta charset="utf-8">
+    <title>Video Maker</title>
+    <meta name="viewport" content="width=device-width,initial-scale=1">
+    <meta name="description" content="">
+    <meta name="keywords" content="">
+    <link rel="stylesheet" type="text/css" href="./static/css/main.css">
+	<!-- Yandex.Metrika counter -->
+	<script type="text/javascript" >
+	   (function(m,e,t,r,i,k,a){m[i]=m[i]||function(){(m[i].a=m[i].a||[]).push(arguments)};
+	   m[i].l=1*new Date();k=e.createElement(t),a=e.getElementsByTagName(t)[0],k.async=1,k.src=r,a.parentNode.insertBefore(k,a)})
+	   (window, document, "script", "https://mc.yandex.ru/metrika/tag.js", "ym");
+
+	   ym(60521497, "init", {
+	        clickmap:true,
+	        trackLinks:true,
+	        accurateTrackBounce:true,
+	        webvisor:true
+	   });
+	</script>
+	<noscript><div><img src="https://mc.yandex.ru/watch/60521497" style="position:absolute; left:-9999px;" alt="" /></div></noscript>
+	<!-- /Yandex.Metrika counter -->
+  </head>
+  <body>
+    <div ng-view></div>
+    <script src="jquery.min.js"></script>
+    <script src="angular/angular.min.js"></script>
+    <script src="angular/angular-route.min.js"></script>
+    <script src="angular/ng-file-upload.min.js"></script>
+    <script src="controllers/indexCtrl.js"></script>
+    <script src="controllers/recCtrl.js"></script>
+    <script src="controllers/successCtrl.js"></script>
+    <script src="controllers/watchCtrl.js"></script>
+    <script src="controllers/errorCtrl.js"></script>
+    <script src="app.js"></script>
+  </body>
+</html>

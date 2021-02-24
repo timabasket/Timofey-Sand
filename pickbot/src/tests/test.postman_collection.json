@@ -1,0 +1,564 @@
+{
+	"info": {
+		"_postman_id": "b656b60d-6b57-4b0f-8d1d-a545c55786a4",
+		"name": "api.funeditor.online",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+	},
+	"item": [
+		{
+			"name": "POST MODE",
+			"item": [
+				{
+					"name": "03 - selfremoval",
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Content-Type",
+								"name": "Content-Type",
+								"type": "text",
+								"value": "application/json"
+							},
+							{
+								"key": "token",
+								"value": "{{TOKEN}}",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{HOST}}/api/postmode/selfremoval/{{LOGIN}}",
+							"host": [
+								"{{HOST}}"
+							],
+							"path": [
+								"api",
+								"postmode",
+								"selfremoval",
+								"{{LOGIN}}"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "04* - set upload form (for set task by uploadId**)",
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Content-Type",
+								"name": "Content-Type",
+								"value": "application/json",
+								"type": "text"
+							},
+							{
+								"key": "token",
+								"type": "text",
+								"value": "{{TOKEN}}"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"greetingText\": \"Привет!\",\n    \"thanksText\": \"Благодарим Вас!\",\n    \"template\": \"tpl02\"\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{HOST}}/api/postmode/pp",
+							"host": [
+								"{{HOST}}"
+							],
+							"path": [
+								"api",
+								"postmode",
+								"pp"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "08 - remove task by id",
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "token",
+								"type": "text",
+								"value": "{{TOKEN}}"
+							}
+						],
+						"url": {
+							"raw": "{{HOST}}/api/postmode/pp/{{TASK_ID}}",
+							"host": [
+								"{{HOST}}"
+							],
+							"path": [
+								"api",
+								"postmode",
+								"pp",
+								"{{TASK_ID}}"
+							]
+						}
+					},
+					"response": []
+				}
+			],
+			"protocolProfileBehavior": {}
+		},
+		{
+			"name": "00 - signup",
+			"request": {
+				"method": "POST",
+				"header": [
+					{
+						"key": "Content-Type",
+						"name": "Content-Type",
+						"type": "text",
+						"value": "application/json"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n\t\"login\":\"{{LOGIN}}\",\n\t\"password\":\"{{PASSWORD}}\"\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "{{HOST}}/api/signup",
+					"host": [
+						"{{HOST}}"
+					],
+					"path": [
+						"api",
+						"signup"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "01- login",
+			"request": {
+				"method": "POST",
+				"header": [
+					{
+						"key": "Content-Type",
+						"name": "Content-Type",
+						"value": "application/json",
+						"type": "text"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n\t\"login\":\"{{LOGIN}}\",\n\t\"password\":\"{{PASSWORD}}\"\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "{{HOST}}/api/login",
+					"host": [
+						"{{HOST}}"
+					],
+					"path": [
+						"api",
+						"login"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "02 - logout",
+			"protocolProfileBehavior": {
+				"disableBodyPruning": true
+			},
+			"request": {
+				"method": "GET",
+				"header": [
+					{
+						"key": "Content-Type",
+						"name": "Content-Type",
+						"type": "text",
+						"value": "application/json"
+					},
+					{
+						"key": "token",
+						"value": "{{TOKEN}}",
+						"type": "text"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "{{HOST}}/api/logout/{{LOGIN}}",
+					"host": [
+						"{{HOST}}"
+					],
+					"path": [
+						"api",
+						"logout",
+						"{{LOGIN}}"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "03 - selfremoval",
+			"request": {
+				"method": "DELETE",
+				"header": [
+					{
+						"key": "Content-Type",
+						"name": "Content-Type",
+						"type": "text",
+						"value": "application/json"
+					},
+					{
+						"key": "token",
+						"value": "{{TOKEN}}",
+						"type": "text"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "{{HOST}}/api/selfremoval/{{LOGIN}}",
+					"host": [
+						"{{HOST}}"
+					],
+					"path": [
+						"api",
+						"selfremoval",
+						"{{LOGIN}}"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "04 - set task (token)",
+			"request": {
+				"method": "POST",
+				"header": [
+					{
+						"key": "Content-Type",
+						"name": "Content-Type",
+						"value": "application/x-www-form-urlencoded",
+						"type": "text"
+					},
+					{
+						"key": "token",
+						"value": "{{TOKEN}}",
+						"type": "text"
+					}
+				],
+				"body": {
+					"mode": "formdata",
+					"formdata": [
+						{
+							"key": "fragments",
+							"type": "file",
+							"src": "/home/vslugin/test_simons_cat_12sec.mp4"
+						},
+						{
+							"key": "template",
+							"value": "{{TEMPLATE}}",
+							"type": "text"
+						},
+						{
+							"key": "",
+							"value": "",
+							"type": "text",
+							"disabled": true
+						}
+					],
+					"options": {
+						"raw": {
+							"language": "javascript"
+						}
+					}
+				},
+				"url": {
+					"raw": "{{HOST}}/api/pp",
+					"host": [
+						"{{HOST}}"
+					],
+					"path": [
+						"api",
+						"pp"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "04** - set task (uploadId)",
+			"request": {
+				"method": "POST",
+				"header": [
+					{
+						"key": "Content-Type",
+						"name": "Content-Type",
+						"type": "text",
+						"value": "application/x-www-form-urlencoded"
+					},
+					{
+						"key": "uploadId",
+						"type": "text",
+						"value": "{{UPLOAD_ID}}"
+					}
+				],
+				"body": {
+					"mode": "formdata",
+					"formdata": [
+						{
+							"key": "fragments",
+							"type": "file",
+							"src": "/home/vslugin/Загрузки/f103.mp4"
+						},
+						{
+							"key": "template",
+							"value": "{{TEMPLATE}}",
+							"type": "text"
+						},
+						{
+							"key": "",
+							"value": "",
+							"type": "text",
+							"disabled": true
+						}
+					],
+					"options": {
+						"raw": {
+							"language": "javascript"
+						}
+					}
+				},
+				"url": {
+					"raw": "{{HOST}}/api/pp",
+					"host": [
+						"{{HOST}}"
+					],
+					"path": [
+						"api",
+						"pp"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "04* - set upload form (for set task by uploadId**)",
+			"request": {
+				"method": "PUT",
+				"header": [
+					{
+						"key": "Content-Type",
+						"name": "Content-Type",
+						"value": "application/json",
+						"type": "text"
+					},
+					{
+						"key": "token",
+						"type": "text",
+						"value": "{{TOKEN}}"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n    \"greetingText\": \"Привет!\",\n    \"thanksText\": \"Благодарим Вас!\",\n    \"template\": \"tpl02\"\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "{{HOST}}/api/pp",
+					"host": [
+						"{{HOST}}"
+					],
+					"path": [
+						"api",
+						"pp"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "05 - get all tasks",
+			"request": {
+				"method": "GET",
+				"header": [
+					{
+						"key": "token",
+						"value": "{{TOKEN}}",
+						"type": "text"
+					}
+				],
+				"url": {
+					"raw": "{{HOST}}/api/pp/",
+					"host": [
+						"{{HOST}}"
+					],
+					"path": [
+						"api",
+						"pp",
+						""
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "06 - get task by id",
+			"request": {
+				"method": "GET",
+				"header": [
+					{
+						"key": "token",
+						"type": "text",
+						"value": "{{TOKEN}}"
+					}
+				],
+				"url": {
+					"raw": "{{HOST}}/api/pp/{{TASK_ID}}",
+					"host": [
+						"{{HOST}}"
+					],
+					"path": [
+						"api",
+						"pp",
+						"{{TASK_ID}}"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "07 - get file by task id",
+			"request": {
+				"method": "GET",
+				"header": [
+					{
+						"key": "token",
+						"type": "text",
+						"value": "{{TOKEN}}"
+					}
+				],
+				"url": {
+					"raw": "{{HOST}}/api/pp/file/{{TASK_ID}}",
+					"host": [
+						"{{HOST}}"
+					],
+					"path": [
+						"api",
+						"pp",
+						"file",
+						"{{TASK_ID}}"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "08 - remove task by id",
+			"request": {
+				"method": "DELETE",
+				"header": [
+					{
+						"key": "token",
+						"type": "text",
+						"value": "{{TOKEN}}"
+					}
+				],
+				"url": {
+					"raw": "{{HOST}}/api/pp/{{TASK_ID}}",
+					"host": [
+						"{{HOST}}"
+					],
+					"path": [
+						"api",
+						"pp",
+						"{{TASK_ID}}"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "09 - get upload form data by id",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "{{HOST}}/#!/?id={{TASK_ID}}",
+					"host": [
+						"{{HOST}}"
+					],
+					"path": [
+						""
+					],
+					"hash": "!/?id={{TASK_ID}}"
+				},
+				"description": "! OPEN IN BROWSER !"
+			},
+			"response": []
+		},
+		{
+			"name": "10 - get video player form by id",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "{{HOST}}/#!/watch?id={{TASK_ID}}",
+					"host": [
+						"{{HOST}}"
+					],
+					"path": [
+						""
+					],
+					"hash": "!/watch?id={{TASK_ID}}"
+				},
+				"description": "! OPEN IN BROWSER !"
+			},
+			"response": []
+		}
+	],
+	"protocolProfileBehavior": {}
+}

@@ -1,0 +1,130 @@
+<pre ng-hide="vm.screen.length">
+
+//  ____ _  _ _  _    ____ ___  _ ___ ____ ____    ____ ___  _
+//  |___ |  | |\ |    |___ |  \ |  |  |  | |__/    |__| |__] |
+//  |    |__| | \|    |___ |__/ |  |  |__| |  \    |  | |    |
+//
+
+ mailto: project[АТ]funeditor.online
+</pre>
+
+<div ng-show="vm.screen==='v-index'" class="layout-body box-col">
+ <div class="content-wrapper">
+  <div class="box-col content-center">
+   <section class="main-top box-col align-middle flex-full text-center"><img class="main-top__start-pic" src="./static/img/general/start-pic.svg" alt="" role="presentation"/><b class="main-top__title">Video Maker</b><span class="main-top__desc">Загрузите или снимите 7-секундный ролик, чтобы мы обработали его и Вы получили свой клип</span>
+   </section>
+   <section class="main-bottom box-col align-center flex-auto">
+    <button class="main-bottom__photo-button red-button">Снять
+    </button>
+    <button class="main-bottom__load-button white-button">Загрузить
+    </button>
+   </section>
+  </div>
+ </div>
+</div>
+
+<div ng-show="vm.screen==='v-done'" class="layout-body box-col">
+ <div class="content-wrapper">
+  <div class="box-col content-center">
+   <section class="video-top box-row align-middle flex-full relative">
+    <video class="video-top__video wrapper-absolute" poster="./static/img/content/picture.jpg">
+     <source src="#" type="video/mp4">
+    </video>
+    <div class="play-button box-row align-middle relative"></div>
+   </section>
+   <section class="video-bottom box-col space-between"><b class="video-bottom__title">Ура! Всё готово 😉</b>
+    <button class="video-bottom__download-button red-button self-center">Скачать
+    </button>
+   </section>
+  </div>
+ </div>
+</div>
+
+<div ng-show="vm.screen==='v-error'" class="layout-body box-col">
+ <div class="content-wrapper">
+  <div class="box-col content-center">
+   <section class="error-top box-col align-middle flex-full text-center"><img class="error-top__error-pic" src="./static/img/general/error-pic.svg" alt="" role="presentation"/><b class="error-top__title">Ошибка</b><span class="error-top__desc">Срок действия ссылки истек или видео удалено</span>
+   </section>
+   <section class="error-bottom box-col align-center flex-auto">
+    <button class="error-bottom__closed-button white-button">Закрыть
+    </button>
+   </section>
+  </div>
+ </div>
+</div>
+
+<div ng-show="vm.screen==='v-record'" class="layout-body box-col">
+ <div class="content-wrapper">
+  <div class="box-col content-center">
+   <section class="video-top box-row align-end flex-full relative">
+    <video class="video-top__video wrapper-absolute" poster="./static/img/content/picture.jpg">
+     <source src="#" type="video/mp4">
+    </video>
+    <div class="video-top__actions box-row space-center full-width relative">
+     <div class="process-button box-row align-middle relative" style="--process-progress: 63">
+      <svg width="58" height="58" version="1.1" xmlns="http://www.w3.org/2000/svg" class="progress">
+       <circle cx="29" cy="29" r="29" stroke="url(#paint0_linear)"/>
+       <linearGradient id="paint0_linear" x1="61" y1="13.5" x2="-29.7399" y2="95.3839" gradientUnits="userSpaceOnUse">
+        <stop stop-color="#FF4343"/>
+        <stop offset="1" stop-color="#FE7D7D" stop-opacity="0"/>
+       </linearGradient>
+      </svg>
+      <svg width="46" height="46" version="1.1" xmlns="http://www.w3.org/2000/svg" class="progress mobile">
+       <circle cx="23" cy="23" r="23" stroke="url(#paint0_linear2)"/>
+       <linearGradient id="paint0_linear2" x1="61" y1="13.5" x2="-29.7399" y2="95.3839" gradientUnits="userSpaceOnUse">
+        <stop stop-color="#FF4343"/>
+        <stop offset="1" stop-color="#FE7D7D" stop-opacity="0"/>
+       </linearGradient>
+      </svg>
+     </div>
+    </div>
+    <div class="closed-button box-row align-middle"><img class="closed-button__default" src="./static/img/general/closed.svg" alt="" role="presentation"/><img class="closed-button__active" src="./static/img/general/closed-active.svg" alt="" role="presentation"/>
+    </div>
+   </section>
+   <section class="video-bottom box-col"><b class="video-bottom__title">Запись видео..</b><span class="video-bottom__desc">После записи видеоролика, мы обработаем его и Вы получите свой клип.</span>
+   </section>
+  </div>
+ </div>
+</div>
+
+<div ng-show="vm.screen==='v-record-process'" class="layout-body box-col">
+ <div class="content-wrapper">
+  <div class="box-col content-center">
+   <section class="video-top box-row align-middle flex-full relative in-process">
+    <video class="video-top__video wrapper-absolute" poster="./static/img/content/picture.jpg">
+     <source src="#" type="video/mp4">
+    </video>
+    <div class="process-bar box-row align-middle relative" style="--progress: 63">
+     63%
+     <svg width="100" height="100" version="1.1" xmlns="http://www.w3.org/2000/svg" class="progress">
+      <circle cx="50" cy="50" r="50"/>
+     </svg>
+     <svg width="72" height="72" version="1.1" xmlns="http://www.w3.org/2000/svg" class="progress mobile">
+      <circle cx="36" cy="36" r="36"/>
+     </svg>
+    </div>
+   </section>
+   <section class="video-bottom box-col"><b class="video-bottom__title">Запись видео..</b><span class="video-bottom__desc">После записи видеоролика, мы обработаем его и Вы получите свой клип.</span>
+   </section>
+  </div>
+ </div>
+</div>
+
+<div ng-show="vm.screen==='v-start'" class="layout-body box-col">
+ <div class="content-wrapper">
+  <div class="box-col content-center">
+   <section class="video-top box-row align-end flex-full relative">
+    <video class="video-top__video wrapper-absolute" poster="./static/img/content/picture.jpg">
+     <source src="#" type="video/mp4">
+    </video>
+    <div class="video-top__actions box-row space-center full-width relative">
+     <div class="record-button box-row align-middle"></div>
+     <div class="camera-button box-row align-middle"><img class="camera-button__default" src="./static/img/general/camera.svg" alt="" role="presentation"/><img class="camera-button__active" src="./static/img/general/camera-active.svg" alt="" role="presentation"/>
+     </div>
+    </div>
+   </section>
+   <section class="video-bottom box-col"><b class="video-bottom__title">Снимите видео</b><span class="video-bottom__desc">У вас есть 7 секунд</span>
+   </section>
+  </div>
+ </div>
+</div>

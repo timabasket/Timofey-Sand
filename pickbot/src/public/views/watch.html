@@ -1,0 +1,41 @@
+<div ng-show="vm.videoInProcess" class="layout-body box-col">
+    <div class="content-wrapper">
+        <div class="box-col content-center">
+            <section class="main-top box-col align-middle flex-full text-center"><img class="main-top__start-pic" src="./static/img/general/start-pic.svg" alt="" role="presentation"/>
+                <b class="main-top__title">Видео в процессе подготовки...</b><span class="main-top__desc">Мы откроем его сразу, как оно будет готово 😉</span>
+            </section>
+        </div>
+    </div>
+</div>
+
+<div ng-show="vm.errors.length" class="layout-body box-col">
+    <div class="content-wrapper">
+        <div class="box-col content-center">
+            <section class="error-top box-col align-middle flex-full text-center">
+                <img class="error-top__error-pic" src="./static/img/general/error-pic.svg" alt="" role="presentation"/>
+                <b class="error-top__title">Ошибка</b>
+                <span class="error-top__desc">{{vm.errors[0]}}</span>
+            </section>
+        </div>
+    </div>
+</div>
+
+
+<div ng-hide="vm.videoInProcess || vm.errors.length" class="layout-body box-col">
+    <div class="content-wrapper">
+        <div class="box-col content-center">
+            <section class="video-top box-row align-end flex-full relative">
+                <video class="video-top__video wrapper-absolute" controls="controls" preload="auto" controlslist="nodownload">
+                    <source src="{{vm.url}}" type="video/mp4; codecs=&quot;avc1.42E01E, mp4a.40.2&quot;">
+                </video>
+<!--                <div class="video-top__actions box-row space-center full-width relative">-->
+<!--                    <div class="record-button box-row align-middle"></div>-->
+<!--                </div>-->
+            </section>
+            <section class="video-bottom box-col"><span class="video-bottom__desc get-desc">
+                Ура! Всё готово 😉 Ролик будет доступен здесь 12 часов, но его можно загрузить и сохранить навсегда.&nbsp;Создать собственный ролик на <a href="https://pickbot.ru">pickbot.ru</a></span>
+                <a class="video-bottom__download-button red-button box-row align-middle self-center" href="{{vm.dlurl}}">Получить ролик</a>
+            </section>
+        </div>
+    </div>
+</div>

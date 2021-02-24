@@ -1,0 +1,21 @@
+version: '2'
+services:
+  mongo:
+    build: ./mongo
+    restart: always
+
+  cron:
+    build: ./cron
+    restart: always
+    # comment two line below for production (and uncomment one line in Dockerfile)
+    volumes:
+      - ./pickbot/src:/srv/pickbot
+
+  pickbot:
+    build: ./pickbot
+    restart: always
+    # comment two line below for production (and uncomment one line in Dockerfile)
+    volumes:
+      - ./pickbot/src:/srv/pickbot
+    ports:
+      - 3000:3000

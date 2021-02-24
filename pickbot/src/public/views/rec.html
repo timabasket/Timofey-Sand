@@ -1,0 +1,127 @@
+<div ng-show="vm.screen==='v-index'" class="layout-body box-col">
+    <div class="content-wrapper">
+        <div class="box-col content-center">
+            <section class="main-top box-col align-middle flex-full text-center">
+                <img class="main-top__start-pic" src="./static/img/general/start-pic.svg" alt="" role="presentation"/>
+                <b class="main-top__title">Video Maker</b>
+                <span ng-show="vm.apiStatus!=='busy'" class="main-top__desc">
+                    {{vm.uploadData.greetingText}}
+                    <br />
+                    <br />
+                    Актуальны первые {{vm.recordTotalSec}} секунд загруженного видео
+                </span>
+                <span ng-show="vm.apiStatus==='busy'" class="main-top__desc">
+                    Извините, система перегружена. <br />Следующая попытка через {{vm.apiStatusBusyCounter}} секунд.
+                </span>
+            </section>
+            <section ng-show="vm.apiStatus!=='busy'" class="main-bottom box-col align-center flex-auto">
+                <button ng-click="vm.initRecorder()" ng-show="vm.mode==='std'" class="main-bottom__photo-button red-button">Снять
+                </button>
+                <button ng-disabled="vm.uploadProgress>0" ngf-select="vm.upload($file)" class="main-bottom__load-button white-button">
+                    <span ng-show="vm.uploadProgress>0">Загрузка {{vm.uploadProgress}}%</span>
+                    <span ng-show="vm.uploadProgress===0">Загрузить</span>
+                </button>
+            </section>
+        </div>
+    </div>
+</div>
+
+<div ng-show="vm.screen==='v-start'" class="layout-body box-col">
+    <div class="content-wrapper">
+        <div class="box-col content-center">
+            <section ng-class="(vm.uploadProgress > 0) ? 'align-middle' : 'align-end'"
+                     class="video-top box-row flex-full relative">
+                <video class="video-top__video wrapper-absolute"
+                       ng-show="vm.videoAreaMode==='rec'" id="rec-area" playsinline autoplay muted></video>
+                <video class="video-top__video wrapper-absolute"
+                       ng-show="vm.videoAreaMode==='play'" id="play-area" controls="controls" playsinline></video>
+<!--                <div ng-show="vm.recordCurSec === vm.recordTotalSec && vm.uploadProgress === 0" ng-click="vm.preview()"-->
+<!--                     class="play-button box-row align-middle relative"></div>-->
+                <!--                <video class="video-top__video wrapper-absolute" poster="./static/img/content/picture.jpg">-->
+                <!--                    <source src="#" type="video/mp4">-->
+                <!--                </video>-->
+                <div ng-show="!vm.recordInProgress && vm.uploadProgress === 0" class="video-top__actions box-row space-center full-width relative">
+                    <div ng-click="vm.startRec()" class="record-button box-row align-middle"></div>
+                    <div ng-show="vm.showCamsToggleBtn" ng-click="vm.toggleCamMode()"
+                         class="camera-button box-row align-middle">
+                        <img class="camera-button__default" src="./static/img/general/camera.svg" alt=""
+                             role="presentation"/>
+                        <img class="camera-button__active" src="./static/img/general/camera-active.svg" alt=""
+                             role="presentation"/>
+                    </div>
+                </div>
+
+                <div ng-show="vm.recordInProgress && vm.uploadProgress === 0" class="video-top__actions box-row space-center full-width relative">
+                    <div ng-click="vm.stopRec()" class="process-button box-row align-middle relative"
+                         style="--process-progress: {{vm.recordCurPercent}}">
+                        <svg width="58" height="58" version="1.1" xmlns="http://www.w3.org/2000/svg" class="progress">
+                            <circle cx="29" cy="29" r="29" stroke="url(#paint0_linear)"/>
+                            <linearGradient id="paint0_linear" x1="61" y1="13.5" x2="-29.7399" y2="95.3839"
+                                            gradientUnits="userSpaceOnUse">
+                                <stop stop-color="#FF4343"/>
+                                <stop offset="1" stop-color="#FE7D7D" stop-opacity="0"/>
+                            </linearGradient>
+                        </svg>
+                        <svg width="46" height="46" version="1.1" xmlns="http://www.w3.org/2000/svg"
+                             class="progress mobile">
+                            <circle cx="23" cy="23" r="23" stroke="url(#paint0_linear2)"/>
+                            <linearGradient id="paint0_linear2" x1="61" y1="13.5" x2="-29.7399" y2="95.3839"
+                                            gradientUnits="userSpaceOnUse">
+                                <stop stop-color="#FF4343"/>
+                                <stop offset="1" stop-color="#FE7D7D" stop-opacity="0"/>
+                            </linearGradient>
+                        </svg>
+                    </div>
+                </div>
+
+                <div ng-show="vm.uploadProgress>0" class="process-bar box-row align-middle relative" style="--progress: {{vm.uploadProgress}}">
+                    {{vm.uploadProgress}}%
+                    <svg width="100" height="100" version="1.1" xmlns="http://www.w3.org/2000/svg" class="progress">
+                        <circle cx="50" cy="50" r="50"/>
+                    </svg>
+                    <svg width="72" height="72" version="1.1" xmlns="http://www.w3.org/2000/svg" class="progress mobile">
+                        <circle cx="36" cy="36" r="36"/>
+                    </svg>
+                </div>
+
+            </section>
+            <section ng-show="vm.recordCurSec !== vm.recordTotalSec" class="video-bottom box-col"><b
+                    class="video-bottom__title">Снимите видео</b><span class="video-bottom__desc">
+                <span ng-show="vm.recordCurSec > 0 && vm.recordCurSec < vm.recordTotalSec && !vm.recordInProgress">
+                    Длительность записанного видео меньше {{vm.recordTotalSec}} секунд. Запишите заново!
+                </span>
+                <span ng-show="!(vm.recordCurSec > 0 && vm.recordCurSec < vm.recordTotalSec && !vm.recordInProgress)">
+                    У вас есть 7 секунд
+                </span>
+            </span>
+            </section>
+            <section ng-show="vm.recordCurSec === vm.recordTotalSec && vm.uploadProgress === 0" class="video-bottom box-col space-between"><b
+                    class="video-bottom__title">{{vm.uploadData.thanksText}}</b>
+                Вы можете просмотреть результат записи и перезаписать заново. Или просто получите ролик!
+                <button ng-click="vm.startUpload()" class="video-bottom__download-button red-button self-center">Получить ролик
+                </button>
+            </section>
+
+            <section ng-show="vm.uploadProgress>0" class="video-bottom box-col"><b class="video-bottom__title">Обработка видео {{vm.uploadVideoDots}}</b>
+                <span class="video-bottom__desc">Мы обработаем его и Вы получите свой клип.</span>
+            </section>
+
+        </div>
+    </div>
+</div>
+
+<div ng-show="vm.screen==='v-error'" class="layout-body box-col">
+    <div class="content-wrapper">
+        <div class="box-col content-center">
+            <section class="error-top box-col align-middle flex-full text-center">
+                <img class="error-top__error-pic" src="./static/img/general/error-pic.svg" alt="" role="presentation"/>
+                <b class="error-top__title">Ошибка</b>
+                <span class="error-top__desc">{{vm.errors[0]}}</span>
+            </section>
+<!--            <section class="error-bottom box-col align-center flex-auto">-->
+<!--                <button class="error-bottom__closed-button white-button">Закрыть-->
+<!--                </button>-->
+<!--            </section>-->
+        </div>
+    </div>
+</div>

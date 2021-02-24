@@ -1,0 +1,15 @@
+var express = require('express');
+var router = express.Router();
+const ppCtrl = require('../controllers/pp');
+router.get('/video/:id', ppCtrl.videoGetById);
+router.get('/dlvideo/:id', ppCtrl.videoDownloadById);
+router.get('/pp', ppCtrl.ppGetAll);
+router.get('/pp/file/:id', ppCtrl.ppGetFile);
+router.get('/pp/upload/:id', ppCtrl.ppGetUploadById);
+router.get('/pp/check/:id', ppCtrl.ppGetStatusById);
+router.get('/pp/:id', ppCtrl.ppGetById);
+router.post('/pp', ppCtrl.ppCreate);
+router.get('/check-state', ppCtrl.checkState);
+router.put('/pp', ppCtrl.ppCreateUpload);
+router.delete('/pp/:id', ppCtrl.ppDelete);
+module.exports = router;

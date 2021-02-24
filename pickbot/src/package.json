@@ -1,0 +1,23 @@
+{
+  "name": "api_kernel",
+  "version": "0.0.0",
+  "private": true,
+  "scripts": {
+    "startProd": "DEFAULT_GREETING_TEXT='GREETING TEXT' DEFAULT_THANKS_TEXT='THANKS TEXT' UPLOADTTLMINUTES=120 TOKENTTLMINUTES=10 PASWDSALT='123456' LIMITOFPROC=5 node ./bin/www",
+    "start": "DEFAULT_GREETING_TEXT='GREETING TEXT' DEFAULT_THANKS_TEXT='THANKS TEXT' UPLOADTTLMINUTES=120 TOKENTTLMINUTES=120 PASWDSALT='123456' LIMITOFPROC=3 AUTOCLEAR=yes node ./bin/www",
+    "dev": "PORT=3001 DEFAULT_GREETING_TEXT='GREETING TEXT' DEFAULT_THANKS_TEXT='THANKS TEXT' UPLOADTTLMINUTES=120 TOKENTTLMINUTES=120 PASWDSALT='123456' LIMITOFPROC=1 node ./bin/www",
+    "clearDb": "mongo --eval 'db.dropDatabase()' fe_pp",
+    "stressTest": "/bin/bash tests/stress-test.sh",
+    "checkState": "/bin/bash tests/check-state.sh"
+  },
+  "dependencies": {
+    "cookie-parser": "~1.4.4",
+    "debug": "~2.6.9",
+    "express": "~4.16.1",
+    "fs-extra": "^8.1.0",
+    "mongoose": "^5.8.10",
+    "morgan": "~1.9.1",
+    "multer": "^1.4.2",
+    "qrcode": "^1.4.4"
+  }
+}
